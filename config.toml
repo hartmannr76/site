@@ -27,7 +27,7 @@ theme = "hyde"
     gravatar = "hartmannr76@gmail.com"
 
 ## Main Menu
-[[menu.main]]
+[[menu.main]] 
     name = "Posts"
     weight = 100
     identifier = "posts"
