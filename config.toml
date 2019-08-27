@@ -18,6 +18,7 @@ theme = "hyde"
     # https://highlightjs.org
     highlightjs = true
     highlightjsstyle = "github"
+    mainSections = ["posts"]
 
 ## Social links
 [params.social]
