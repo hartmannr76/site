@@ -18,6 +18,7 @@ jobs:
     - checkout: self
       submodules: true
       clean: true
+      persistCredentials: true
     - script: sudo apt-get install hugo
       displayName: 'Install Hudo'
     - script: hugo version
