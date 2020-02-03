@@ -3,15 +3,21 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+
 trigger:
 - master
 
 pool:
   vmImage: 'ubuntu-latest'
 
+
+
 jobs:
   - job: BuildSite
-    container: jguyomard/hugo-builder:latest
     steps:
-    - script: hugo
-      displayName: 'Build Static Assets'
+    - checkout: self
+      submodules: true
+      clean: true
+    - script: sudo apt-get install hugo
+      displayName: 'Install Hudo'
+    - script: hugo version
