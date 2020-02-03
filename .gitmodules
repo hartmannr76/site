@@ -3,5 +3,5 @@
 	url = https://github.com/htr3n/hyde-hyde.git
 [submodule "public"]
 	path = public
-	url = git@github.com-personal:hartmannr76/hartmannr76.github.io.git
+	url = git@github.com:hartmannr76/hartmannr76.github.io.git
 	branch = master
