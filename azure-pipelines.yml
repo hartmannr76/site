@@ -10,6 +10,9 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  buildid: $(Build.BuildId)
+
 jobs:
   - job: BuildSite
     steps:
@@ -28,11 +31,11 @@ jobs:
     - script: |
         cd public
         git add .
-        git commit -m "rebuilding site $(Build.BuildId)"
+        git commit -m "rebuilding site $(buildid)"
         git push origin master
       displayName: 'Generate Blog and push'
     - script: |
         git add .
-        git commit -m "Pushing changes from build $(Build.BuildId)"
+        git commit -m "Pushing changes from build $(buildid)"
         git push
       displayName: Committing changes in project
