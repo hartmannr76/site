@@ -10,8 +10,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-
-
 jobs:
   - job: BuildSite
     steps:
@@ -20,5 +18,18 @@ jobs:
       clean: true
       persistCredentials: true
     - script: sudo apt-get install hugo
-      displayName: 'Install Hudo'
-    - script: hugo version
+      displayName: 'Install Hugo'
+    - script: |
+        hugo --log -v
+      displayName: 'Generate Blog'
+    - script: |
+        cd public
+        git add .
+        git commit -m "rebuilding site $(BuildID)"
+        git push origin master
+      displayName: 'Generate Blog and push'
+    - script: |
+        git add .
+        git commit -m "Pushing changes from build $(BuildID)"
+        git push
+      displayName: Committing changes in project
