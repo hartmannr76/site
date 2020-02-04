@@ -28,11 +28,11 @@ jobs:
     - script: |
         cd public
         git add .
-        git commit -m "rebuilding site $(BuildID)"
+        git commit -m "rebuilding site $(Build.BuildId)"
         git push origin master
       displayName: 'Generate Blog and push'
     - script: |
         git add .
-        git commit -m "Pushing changes from build $(BuildID)"
+        git commit -m "Pushing changes from build $(Build.BuildId)"
         git push
       displayName: Committing changes in project
