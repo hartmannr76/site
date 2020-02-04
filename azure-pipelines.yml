@@ -29,6 +29,10 @@ jobs:
         hugo --log -v
       displayName: 'Generate Blog'
     - script: |
+        git config --global user.email "hartmannr76@gmail.com"
+        git config --global user.name "Ricky Hartmann"
+      displayName: Setup Git User
+    - script: |
         cd public
         git add .
         git commit -m "rebuilding site $(buildid)"
