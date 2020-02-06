@@ -29,8 +29,8 @@ jobs:
         hugo --log -t hyde -v
       displayName: 'Generate Blog'
     - script: |
-        git config user.email "hartmannr76@gmail.com"
-        git config user.name "Ricky Hartmann"
+        git config --global user.email "hartmannr76@gmail.com"
+        git config --global user.name "Ricky Hartmann"
         git add .
         git commit -m "rebuilding site $(buildid)"
         git push origin master
