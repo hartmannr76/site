@@ -31,7 +31,7 @@ jobs:
     - script: |
         git config user.email "hartmannr76@gmail.com"
         git config user.name "Ricky Hartmann"
-        git add -A
+        git add .
         git commit -m "rebuilding site $(buildid)"
         git push origin master
       workingDirectory: ./public
