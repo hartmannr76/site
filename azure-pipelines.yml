@@ -34,13 +34,13 @@ jobs:
       displayName: Setup Git User
     - script: |
         cd public
-        git add .
+        git add -A
         git commit -m "rebuilding site $(buildid)"
         git push origin master
       workingDirectory: ./public
       displayName: 'Committing changes in ./public folder'
     - script: |
-        git add .
+        git add -A
         git commit -m "Pushing changes from build $(buildid)"
         git push
       displayName: Committing changes in master to include subproject change
