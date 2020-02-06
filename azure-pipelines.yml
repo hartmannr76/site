@@ -37,9 +37,10 @@ jobs:
         git add .
         git commit -m "rebuilding site $(buildid)"
         git push origin master
-      displayName: 'Generate Blog and push'
+      workingDirectory: ./public
+      displayName: 'Committing changes in ./public folder'
     - script: |
         git add .
         git commit -m "Pushing changes from build $(buildid)"
         git push
-      displayName: Committing changes in project
+      displayName: Committing changes in master to include subproject change
