@@ -36,10 +36,3 @@ jobs:
         git push origin master
       workingDirectory: ./public
       displayName: 'Committing changes in ./public folder'
-    - script: |
-        git config user.email "hartmannr76@gmail.com"
-        git config user.name "Ricky Hartmann"
-        git add -A
-        git commit -m "Pushing changes from build $(buildid)"
-        git push
-      displayName: Committing changes in master to include subproject change
