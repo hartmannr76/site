@@ -35,6 +35,6 @@ jobs:
         git remote add origin https://azure:$(GITHUBPAT)@github.com/hartmannr76/hartmannr76.github.io.git/
         git add .
         git commit -m "rebuilding site $(buildid)"
-        git push origin master
+        git push -u origin master
       workingDirectory: ./public
       displayName: 'Committing changes in ./public folder'
