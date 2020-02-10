@@ -31,8 +31,10 @@ jobs:
     - script: |
         git config --global user.email "hartmannr76@gmail.com"
         git config --global user.name "Ricky Hartmann"
+        git remote rm origin
+        git remote add origin https://azure:$(GITHUBPAT)@github.com/hartmannr76/hartmannr76.github.io.git/
         git add .
         git commit -m "rebuilding site $(buildid)"
-        git -c http.extraheader="AUTHORIZATION:PAT $(GITHUBPAT)" push origin master
+        git push origin master
       workingDirectory: ./public
       displayName: 'Committing changes in ./public folder'
