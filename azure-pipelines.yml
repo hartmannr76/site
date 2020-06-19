@@ -3,15 +3,48 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+
 trigger:
 - master
+# only trigger on master
+pr: none
 
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  buildid: $(Build.BuildId)
+
 jobs:
   - job: BuildSite
-    container: jguyomard/hugo-builder:latest
     steps:
-    - script: hugo
-      displayName: 'Build Static Assets'
+    - checkout: self
+      submodules: true
+      clean: true
+      persistCredentials: true
+    - script: |
+        git log -n 1
+      workingDirectory: ./themes/hyde-hyde
+      displayName: Log latest
+    - script: |
+        cd ~
+        wget https://github.com/gohugoio/hugo/releases/download/v0.57.2/hugo_0.57.2_Linux-64bit.deb
+        sudo dpkg -i hugo*.deb
+      displayName: 'Install Hugo'
+    - script: |
+        git config --global user.email "hartmannr76@gmail.com"
+        git config --global user.name "Ricky Hartmann"
+        git remote rm origin
+        git remote add origin https://azure:$(GITHUBPAT)@github.com/hartmannr76/hartmannr76.github.io.git/
+        git checkout master
+      workingDirectory: ./public
+      displayName: Setup public folder
+    - script: |
+        hugo --log -t hyde-hyde -v
+      displayName: 'Generate Blog'
+    - script: |
+        git add .
+        git commit -m "rebuilding site $(buildid)"
+        git push origin master
+      workingDirectory: ./public
+      displayName: 'Committing changes in ./public folder'

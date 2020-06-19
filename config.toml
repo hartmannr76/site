@@ -1,6 +1,6 @@
 baseURL = "https://www.rhart.dev/"
 languageCode = "en-us"
-theme = "hyde"
+theme = "hyde-hyde"
 
 ## Site Settings
 [params]
